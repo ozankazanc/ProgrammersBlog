@@ -1,0 +1,51 @@
+﻿@{
+    Layout = "_Layout";
+    ViewBag.Title = "Profil Düzenle";
+}
+@model ProgrammersBlog.Entities.Dtos.UserUpdateDto
+
+<div class="row">
+    <div class="col-md-5">
+        <div class="card mt-3">
+            <div class="card-header">
+                <h4 class="text-center"><span class="fas fa-edit"></span>  Profil Düzenle</h4>
+            </div>
+            <div class="card-body">
+                <div class="modal-body">
+                    <form asp-controller="User" asp-action="ChangeDetails" enctype="multipart/form-data" id="form-user-update" method="post">
+                        <div asp-validation-summary="All" class="text-danger" id="validation-summary"></div>
+                        <input asp-for="Id" type="hidden" />
+                        <div class="form-group text-center">
+                            <input asp-for="Picture" type="hidden" />
+                            <img class="img-fluid img-thumbnail my-image" src="~/img/@Model.Picture" alt="@Model.UserName" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="UserName"></label>
+                            <input class="form-control" asp-for="UserName" placeholder="Lütfen, kullanıcı adınızı giriniz." />
+                            <span class="text-danger" asp-validation-for="UserName"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Email"></label>
+                            <input type="email" class="form-control" asp-for="Email" placeholder="Lütfen, E-Mail adresini giriniz." />
+                            <span class="text-danger" asp-validation-for="Email"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="PhoneNumber"></label>
+                            <input type="text" class="form-control" asp-for="PhoneNumber" placeholder="Lütfen, telefon numaranızı giriniz." />
+                            <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="PictureFile"></label>
+                            <input type="file" accept="image/*" class="form-control-file" asp-for="PictureFile" placeholder="Lütfen, bir resim giriniz." />
+                            <span class="text-danger" asp-validation-for="PictureFile"></span>
+                        </div>
+                        <div class="form-group offset-6">
+                            <a class="btn btn-warning" asp-area="Admin" asp-controller="Home" asp-action="Index"><span class="fas fa-times"></span> İptal</a>
+                            <button type="submit" class="btn btn-primary"><span class="fas fa-save"></span> Kaydet</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>
